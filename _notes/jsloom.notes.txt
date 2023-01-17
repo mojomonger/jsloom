@@ -1,0 +1,28 @@
+requirements
+* must be able to save and retrieve data! at first, do simple
+
+modifications/todo
+* generate graphics from data array (not native graphic commands as per devon original)
+
+features
+* provide setup screen
+    - pixel width of squares?
+    - how many harness
+    - how many ends
+* color chooser
+* copy and paste harness threadings
+* copy and paste treadles
+* copy and paste colors in ends
+* copy and paste colors of treadles
+
+nice features:
+* image weft with smoothed borders around "wixels"
+* provide a fade weft experience (gradient?)
+* use pie menus!
+
+engineering
+* data arrays for:
+    - harnesses (threads)
+    - tieup
+    - pedals
+    - weft (?)

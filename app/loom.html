@@ -1,0 +1,104 @@
+
+<HTML>
+<HEAD>
+    <!-- Loom simulator for weavers -->
+    <META name="Author" content="Chris Lombardi">
+    <META name="Copyright" content="&copy; 2022 Chris Lombardi">
+    <META name="License" content="GNU General Public License GPLv3">
+    <META charset="utf-8"/>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <LINK rel="icon" type="image/x-icon" href="favicon.ico" />
+
+
+</HEAD>
+
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN'
+'https://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+
+<svg xmlns='https://www.w3.org/2000/svg'
+     xmlns:xlink='https://www.w3.org/1999/xlink'
+     width="1200" height="1600">
+    <g id='colors' cursor="pointer" onClick='colorsZ(evt)'>
+    <!-- place color grid here -->
+    </g>
+
+    <g id='tieup' cursor='pointer' onClick='tieupZ(evt)'></g>
+    <g id='harness' cursor='pointer' onClick='harnessZ(evt)'></g>
+    <g id='pedals' cursor='pointer' onClick='pedalsZ(evt)'></g>
+    <g id='warp' cursor='pointer' onClick='warpZ(evt)'></g>
+    <g id='weft' cursor='pointer' onClick='weftZ(evt)'></g>
+    <g id='weave' cursor='pointer' onClick='weaveZ(evt)'></g>
+
+    var harness = [2, 1, 0, 1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 2, 1, 0, 5,
+    4, 3, 2, 1, 0, 5,
+    4, 3, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 4, 3, 2, 1, 0, 5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 4, 3];
+    var pedals = [3, 2, 1, 0, 1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 5, 0,
+    1, 2, 3, 4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 1, 0, 5,
+    0,
+    1, 2, 3, 4, 5, 0,
+    5,
+    4, 3, 2, 3, 4, 0,
+    1, 2, 3, 4, 3, 2, 1];
+    var warp = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3];
+    var weft = [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6];
+
+    <!-- "g" rect values stored in data.html -->
+
+
+</svg>
+</HTML>
